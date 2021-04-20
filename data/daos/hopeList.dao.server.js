@@ -1,37 +1,48 @@
 const animeDao = require('./anime.dao.server');
-
 const hopeListModel = require('../models/HopeList/hopeList.model.server');
 
-const findAllHopeLists = () => {
+const findAllHopeLists = () =>
     hopeListModel.find();
-}
 
-const findHopeListById = (hid) => {
+
+const findHopeListById = (hid) =>
     hopeListModel.findById({_id: hid});
-}
 
-const findHopeListByUserId = (uid) => {
+
+const findHopeListByUserId = (uid) =>
     hopeListModel.find({userId: uid});
-}
 
-const findAllHopeToWatchAnimesByUserId = (uid) => {
+
+const findAllHopeToWatchAnimesByUserId = (uid) =>
     hopeListModel.find({userId: uid}).populate('animes');
+
+
+const createHopeList = (uid, hopeList) => {
+    hopeList.userId = uid;
+    return hopeListModel.create(hopeList);
 }
 
-const createHopeList = (hopeList) => {
-    hopeListModel.create(hopeList);
-}
-
-const deleteHopeList = (hid) => {
+const deleteHopeList = (hid) =>
     hopeListModel.findByIdAndDelete({_id: hid});
-}
 
-const addAnime = (hid, anime) => {
-    // animeDao.createAnime(anime).then(anime => hopeListModel.findByIdAndUpdate({_id: hid}), {$push:
-    //         {animes: anime._id}}).populate("animes");
-    hopeListModel.findByIdAndUpdate({_id: hid}, {$push: {animes: anime._id}});
-}
 
-const deleteAnime = (hid, aid) => {
+const addAnime = (hid, anime) =>
+    animeDao.createAnime(anime).then(anime => hopeListModel.findByIdAndUpdate({_id: hid}), {$push:
+            {animes: anime._id}});
+    // hopeListModel.findByIdAndUpdate({_id: hid}, {$push: {animes: anime._id}});
+
+
+const deleteAnime = (hid, aid) =>
     hopeListModel.findByIdAndUpdate({_id: hid}, {$pull: {animes: {_id: aid}}});
+
+
+module.exports = {
+    findAllHopeLists,
+    findAllHopeToWatchAnimesByUserId,
+    findHopeListById,
+    findHopeListByUserId,
+    createHopeList,
+    deleteHopeList,
+    addAnime,
+    deleteAnime
 }
