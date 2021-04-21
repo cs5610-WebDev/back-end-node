@@ -1,5 +1,5 @@
 const animeDao = require('./anime.dao.server');
-const watchingListModel = require('../models/WatchedList/watchingList.model.server');
+const watchingListModel = require('../models/WatchingList/watchingList.model.server');
 
 const findAllWatchingLists = () =>
     watchingListModel.find();
@@ -28,8 +28,14 @@ const addAnime = (wid, anime) =>
             {animes: anime._id}
     }));
 
-const deleteAnime = (wid, aid) =>
-    watchingListModel.findByIdAndUpdate({_id: wid}, {$pull: {animes: {_id: aid}}});
+const deleteAnime = (wid, anime) => {
+    console.log(anime);
+    return watchingListModel.findByIdAndUpdate({_id: wid}, [
+        {
+            $pull: {animes: anime}
+        }
+    ]);
+}
 
 module.exports = {
     findAllWatchingLists,

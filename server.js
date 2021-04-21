@@ -36,6 +36,7 @@ require('./controllers/anime.controller.server')(app);
 require('./controllers/hopeList.controller.server')(app);
 require('./controllers/admin.controller.server')(app);
 require('./controllers/watchedList.controller.server')(app);
+require('./controllers/watchingList.controller.server')(app);
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/' + 'api.server.html')
