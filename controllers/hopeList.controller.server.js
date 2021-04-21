@@ -35,6 +35,4 @@ module.exports = (app) => {
         hopeListService.deleteAnime(req.params['uid'], req.params['aid'])
             .then(animes => res.send(animes))
     })
-
-
 }
