@@ -32,5 +32,12 @@ app.use(function (req, res, next) {
 });
 
 require('./controllers/user.controller.server')(app);
+require('./controllers/anime.controller.server')(app);
+require('./controllers/hopeList.controller.server')(app);
+require('./controllers/admin.controller.server')(app);
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/' + 'api.server.html')
+});
 
 app.listen(process.env.PORT || 4000);

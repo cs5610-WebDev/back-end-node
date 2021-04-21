@@ -8,4 +8,4 @@ const hopeListSchema = mongoose.Schema({
     }]
 }, {collection: 'hopeLists'});
 
-module.exports = hopeListSchema
+module.exports = hopeListSchema;

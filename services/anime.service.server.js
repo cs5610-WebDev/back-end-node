@@ -16,9 +16,9 @@ const deleteAnime = (aid) =>
     animeDao.deleteAnime(aid);
 
 
-const updateAnime = (aid, anime) => {
+const updateAnime = (aid, anime) =>
     animeDao.updateAnime(aid, anime);
-}
+
 
 module.exports = {
     findAllAnime,

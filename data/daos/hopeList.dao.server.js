@@ -13,28 +13,27 @@ const findHopeListByUserId = (uid) =>
     hopeListModel.find({userId: uid});
 
 
-const findAllHopeToWatchAnimesByUserId = (uid) =>
-    hopeListModel.find({userId: uid}).populate('animes');
-
-
-const createHopeList = (uid, hopeList) => {
-    hopeList.userId = uid;
-    return hopeListModel.create(hopeList);
+const findAllHopeToWatchAnimesByUserId = (uid) => {
+    return hopeListModel.find({"userId": uid})
+        .populate('animes').exec();
 }
+
+
+const createHopeList = (hopeList) =>
+    hopeListModel.create(hopeList);
+
 
 const deleteHopeList = (hid) =>
     hopeListModel.findByIdAndDelete({_id: hid});
 
 
 const addAnime = (hid, anime) =>
-    animeDao.createAnime(anime).then(anime => hopeListModel.findByIdAndUpdate({_id: hid}), {$push:
-            {animes: anime._id}});
-    // hopeListModel.findByIdAndUpdate({_id: hid}, {$push: {animes: anime._id}});
+    animeDao.createAnime(anime).then(anime => hopeListModel.findByIdAndUpdate({_id: hid}, {$push:
+            {animes: anime._id}}));
 
 
 const deleteAnime = (hid, aid) =>
     hopeListModel.findByIdAndUpdate({_id: hid}, {$pull: {animes: {_id: aid}}});
-
 
 module.exports = {
     findAllHopeLists,

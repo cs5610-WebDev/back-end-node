@@ -16,8 +16,8 @@ const findAllHopeToWatchAnimesByUserId = (uid) =>
     hopeListDao.findAllHopeToWatchAnimesByUserId(uid);
 
 
-const createHopeList = (uid, hopeList) =>
-    hopeListDao.createHopeList(uid, hopeList);
+const createHopeList = (hopeList) =>
+    hopeListDao.createHopeList(hopeList);
 
 
 const deleteHopeList = (hid) =>
@@ -25,8 +25,6 @@ const deleteHopeList = (hid) =>
 
 
 const addAnime = (hid, anime) =>
-    // animeDao.createAnime(anime).then(anime => hopeListModel.findByIdAndUpdate({_id: hid}), {$push:
-    //         {animes: anime._id}}).populate("animes");
     hopeListDao.addAnime(hid, anime);
 
 

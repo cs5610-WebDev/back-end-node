@@ -1,24 +1,24 @@
 const animeModel = require('../models/Anime/anime.model.server');
 
-const findAllAnime = () => {
+const findAllAnime = () =>
     animeModel.find();
-}
 
-const findAnimeById = (aid) => {
-    animeModel.find({_id: aid});
-}
 
-const createAnime = (anime) => {
+const findAnimeById = (aid) =>
+    animeModel.findById(aid);
+
+
+const createAnime = (anime) =>
     animeModel.create(anime);
-}
 
-const deleteAnime = (aid) => {
+
+const deleteAnime = (aid) =>
     animeModel.findByIdAndDelete({_id: aid});
-}
 
-const updateAnime = (aid, anime) => {
+
+const updateAnime = (aid, anime) =>
     animeModel.findByIdAndUpdate({_id: aid}, anime);
-}
+
 
 module.exports = {
     findAllAnime,
