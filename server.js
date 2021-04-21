@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const session = require('express-session')
 const cookieParser = require('cookie-parser');
+cors = require('cors')
 
 // Connect with DB
 require('./data/db');
@@ -22,8 +23,9 @@ app.use(bodyParser.json());
 
 
 // Configure CORS
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Headers',
         'Content-Type, X-Requested-With, Origin');
     res.header('Access-Control-Allow-Methods',

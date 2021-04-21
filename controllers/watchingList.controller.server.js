@@ -31,10 +31,11 @@ module.exports = (app) => {
             .then(animes => res.send(animes))
     })
 
-    // app.delete('/api/watchingLists/users/:uid/animes/delete/:aid', (req, res) => {
-    //     watchingListService.deleteAnime(req.params['uid'], req.params['aid'])
-    //         .then(animes => res.send(animes))
-    // }
+    app.delete('/api/watchingLists/users/:uid/animes/delete/:aid', (req, res) => {
+        watchingListService.deleteAnime(req.params['uid'], req.params['aid'])
+            .then((animes) => res.send(animes))
+    }
+    )
 
     app.delete('/api/watchingLists/users/:uid/animes/delete', (req, res) => {
         watchingListService.deleteAnime(req.params['uid'], req.body)

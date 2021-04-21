@@ -7,7 +7,7 @@ const webUserSchema = mongoose.Schema({
     profileName: String,
     profilePicUrl: String,
     userType: String,
-    loginStatus: Boolean
+    animeList: []
 }, {collection: 'webUsers'});
 
 module.exports = webUserSchema

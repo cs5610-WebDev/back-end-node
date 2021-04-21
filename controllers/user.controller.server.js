@@ -11,15 +11,16 @@ module.exports = (app) => {
     }
 
     const login = (req, res) => {
-        useService.logIn(req.body.userName, req.body.password)
-            .then(user => {
-            if (user != null) {
+        useService.logIn(req.body.username, req.body.password)
+        .then(user => {
+            if (user) {
                 req.session.user = user;
                 req.session.cookie.maxAge = 24 * 60 * 60 * 1000;
                 this.user = req.session.user;
-                return res.send(user);
+                res.send(user);
+            } else {
+                res.send("0");
             }
-            res.send({result: false});
         })
     }
 
