@@ -8,4 +8,4 @@ const watchingListSchema = mongoose.Schema({
     }]
 }, {collection: 'watchingList'});
 
-module.exports = watchingListSchema
+module.exports = watchingListSchema;

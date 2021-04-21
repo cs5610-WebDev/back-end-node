@@ -31,8 +31,13 @@ module.exports = (app) => {
             .then(animes => res.send(animes))
     })
 
-    app.put('/api/watchedLists/users/:uid/animes/delete/:aid', (req, res) => {
-        watchedListService.deleteAnime(req.params['uid'], req.params['aid'])
+    // app.delete('/api/watchedLists/users/:uid/animes/delete/:aid', (req, res) => {
+    //     watchedListService.deleteAnime(req.params['uid'], req.params['aid'])
+    //         .then(animes => res.send(animes))
+    // }
+
+    app.delete('/api/watchedLists/users/:uid/animes/delete', (req, res) => {
+        watchedListService.deleteAnime(req.params['uid'], req.body)
             .then(animes => res.send(animes))
     })
 }

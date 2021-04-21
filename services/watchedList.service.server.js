@@ -4,8 +4,8 @@ const findAllWatchedLists = () =>
     watchedListDao.findAllWatchedLists();
 
 
-const findWatchedListById = (hid) =>
-    watchedListDao.findWatchedListById(hid);
+const findWatchedListById = (wid) =>
+    watchedListDao.findWatchedListById(wid);
 
 
 const findWatchedListByUserId = (uid) =>
