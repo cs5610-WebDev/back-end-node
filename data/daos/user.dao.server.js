@@ -14,7 +14,6 @@ const findUserByUsername = (username) =>
 const logIn = (userName, password) =>
     UserModel.findOne({"userName": userName, "password": password})
 
-
 const createUser = (user) =>
     UserModel.create(user)
 
