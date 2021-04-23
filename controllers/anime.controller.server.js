@@ -8,8 +8,8 @@ module.exports = (app) => {
     });
 
     app.post('/api/animes/create', (req, res) => {
-        animeService.createAnime(res.body)
-            .then(anime => req.send(anime))
+        animeService.createAnime(req.body)
+            .then(anime => res.send(anime))
     });
 
     app.get('/api/animes/:aid', (req, res) => {

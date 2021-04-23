@@ -11,6 +11,8 @@ const findDisplayListById = (did) =>
 const findHopeListByUserId = (uid) =>
     displayListDao.findDisplayListsById(uid);
 
+const findByAnimeId = (aid) =>
+    displayListDao.findByAnimeId(aid);
 
 const findAllAnime = () =>
     displayListDao.findAllAnime();
@@ -24,8 +26,8 @@ const deleteDisplayList = (hid) =>
     displayListDao.deleteDisplayList(hid);
 
 
-const addAnime = (hid, anime) =>
-    displayListDao.addAnime(hid, anime);
+const addAnime = (anime) =>
+    displayListDao.addAnime(anime);
 
 
 const deleteAnime = (hid, anime) =>
@@ -40,5 +42,6 @@ module.exports = {
     createDisplayList,
     deleteDisplayList,
     addAnime,
-    deleteAnime
+    deleteAnime,
+    findByAnimeId
 }

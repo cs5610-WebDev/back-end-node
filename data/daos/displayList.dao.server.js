@@ -9,7 +9,12 @@ const findDisplayListsById = (did) =>
     displayListModel.findById(did)
 
 const findAllAnime = () =>
-    displayListModel.find().populate('animes');
+    // displayListModel.find();
+    displayListModel.find().populate('anime');
+
+const findByAnimeId = (aid) =>
+    displayListModel.find({anime: aid});
+
 
 
 const createDisplayList = (displayList) =>
@@ -20,13 +25,14 @@ const deleteDisplayList = (did) =>
     displayListModel.findByIdAndDelete({_id: did});
 
 
-const addAnime = (did, anime) =>
-    animeDao.createAnime(anime).then(anime => displayListModel.findByIdAndUpdate({_id: did}, {$push:
-    {animes: anime}}).populate("animes"));
+const addAnime = (anime) =>
+    displayListModel.createAnime(anime)
+    // animeDao.createAnime(anime).then(anime => displayListModel.findByIdAndUpdate({_id: did}, {$push:
+    // {animes: anime}}).populate("animes"));
 
 
-const deleteAnime = (did, anime) =>
-    displayListModel.findByIdAndUpdate({_id: did}, [{$pull: {animes: anime}}]);
+const deleteAnime = (did) =>
+    displayListModel.findOneAndDelete({anime: did});
 
 
 module.exports = {
@@ -36,5 +42,6 @@ module.exports = {
     createDisplayList,
     deleteDisplayList,
     addAnime,
-    deleteAnime
+    deleteAnime,
+    findByAnimeId
 }

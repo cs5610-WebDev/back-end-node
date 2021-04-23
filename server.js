@@ -22,6 +22,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
+
+
 // Configure CORS
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(function (req, res, next) {
