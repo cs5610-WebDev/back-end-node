@@ -18,6 +18,8 @@ app.use(session({
     }
 }));
 
+console.log(process.env.FRONT_END);
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
