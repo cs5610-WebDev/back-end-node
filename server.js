@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Configure CORS
-// app.use(cors({credentials: true, origin: "https://kissanime-frontend.herokuapp.com/"}));
+app.use(cors({credentials: true, origin: "*"}));
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers',
