@@ -8,9 +8,7 @@ This web application is intended to help Anime(Japanese animation) lovers to:
 
 ## Design UML:
 
-
-
-
+![alt text](https://github.com/cs5610-WebDev/back-end-node/blob/main/uml.png?raw=true)
 
 ## Heroku Link:
 [KissAnime](https://kissanime-frontend.herokuapp.com/)
